@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "1Oa-XB-UQA"; */
+"1Oa-XB-UQA.text" = "Подробно";
+
+/* Class = "UILabel"; text = "Demoanwendung: Nicht für die Navigation durch den Straßenverkehr geeignet"; ObjectID = "1gf-91-0pO"; */
+"1gf-91-0pO.text" = "Демонстрационное приложение: не подходит для навигации по пробкам";
+
+/* Class = "UITableViewSection"; headerTitle = "Kamera"; ObjectID = "7Hx-yu-nCr"; */
+"7Hx-yu-nCr.headerTitle" = "Камера";
+
+/* Class = "UITableViewSection"; footerTitle = "Stellt alle Einstellungen auf die Ursprungswerte zurück"; ObjectID = "7Nc-zB-blE"; */
+"7Nc-zB-blE.footerTitle" = "Сбрасывает все настройки до исходных значений";
+
+/* Class = "UILabel"; text = "Vibration"; ObjectID = "8qc-2I-nTP"; */
+"8qc-2I-nTP.text" = "Вибрация";
+
+/* Class = "UILabel"; text = "Zum Fortsetzen der Erkennung bringe das Gerät in einen für die Ampelerkennung günstigen Neigungswinkel"; ObjectID = "Ecq-b2-XSb"; */
+"Ecq-b2-XSb.text" = "Чтобы продолжить обнаружение, наклоните устройство под удобным углом для обнаружения светофора";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "FW6-RE-wcj"; */
+"FW6-RE-wcj.text" = "Подробно";
+
+/* Class = "UITableViewSection"; footerTitle = "Gibt an ab welcher Konfidenz in Prozent eine Erkennung berücksichtigt wird"; ObjectID = "FXq-oI-S2m"; */
+"FXq-oI-S2m.footerTitle" = "Указывает процент достоверности, выше которого считается обнаружение";
+
+/* Class = "UITableViewSection"; headerTitle = "Konfidenzschwelle"; ObjectID = "FXq-oI-S2m"; */
+"FXq-oI-S2m.headerTitle" = "Порог достоверности";
+
+/* Class = "UILabel"; text = "Zurücksetzen"; ObjectID = "J2L-nd-v5S"; */
+"J2L-nd-v5S.text" = "Сброс";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "Kha-Gb-h5G"; */
+"Kha-Gb-h5G.text" = "100";
+
+/* Class = "UILabel"; text = "Elapsed Time"; ObjectID = "UGh-bZ-CQP"; */
+"UGh-bZ-CQP.text" = "Прошедшее время";
+
+/* Class = "UILabel"; text = "Vorschau"; ObjectID = "UQ1-HL-yFc"; */
+"UQ1-HL-yFc.text" = "Предварительный просмотр";
+
+/* Class = "UILabel"; text = "Ton"; ObjectID = "Uhd-eO-ohm"; */
+"Uhd-eO-ohm.text" = "Звук";
+
+/* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "WIq-R2-tUq"; */
+"WIq-R2-tUq.headerTitle" = "Отзыв";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "XcH-XU-7OG"; */
+"XcH-XU-7OG.text" = "Заголовок";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "aI9-sd-LQ6"; */
+"aI9-sd-LQ6.text" = "0";
+
+/* Class = "UILabel"; text = "Pausiert"; ObjectID = "aQs-X4-oie"; */
+"aQs-X4-oie.text" = "Пауза";
+
+/* Class = "UILabel"; text = "Zoom"; ObjectID = "jjc-HL-eK9"; */
+"jjc-HL-eK9.text" = "Масштаб";
+
+/* Class = "UILabel"; text = "Auflösung"; ObjectID = "yRf-7T-Cr7"; */
+"yRf-7T-Cr7.text" = "Разрешение";

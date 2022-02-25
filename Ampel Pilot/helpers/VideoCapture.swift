@@ -53,8 +53,6 @@ public class VideoCapture: NSObject {
         self.captureDevice = captureDevice
         
         
-        
-        
         guard let videoInput = try? AVCaptureDeviceInput(device: captureDevice) else {
             print("Error: could not create AVCaptureDeviceInput")
             return false

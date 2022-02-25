@@ -16,7 +16,7 @@ class VisualFeedbackView: UIView {
         l.textColor = .black
         l.adjustsFontForContentSizeCategory = true
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Keine Ampel erkannt"
+        l.text = NSLocalizedString("Keine Ampel erkannt", comment: "Keine Ampel erkannt")
         l.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently
         
         return l
@@ -33,13 +33,13 @@ class VisualFeedbackView: UIView {
         switch phase {
         case .green:
             backgroundColor = .green
-            phaseLabel.text = "Grün"
+            phaseLabel.text = NSLocalizedString("Grün", comment: "Grün")
         case .red:
             backgroundColor = .red
-            phaseLabel.text = "Rot"
+            phaseLabel.text = NSLocalizedString("Rot", comment: "Rot")
         case .none:
             backgroundColor = .clear
-            phaseLabel.text = "Keine Ampel erkannt"
+            phaseLabel.text = NSLocalizedString("Keine Ampel erkannt", comment: "Keine Ampel erkannt")
         }
     }
     

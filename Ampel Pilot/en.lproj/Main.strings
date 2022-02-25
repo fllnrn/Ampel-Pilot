@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "1Oa-XB-UQA"; */
+"1Oa-XB-UQA.text" = "Detail";
+
+/* Class = "UILabel"; text = "Demoanwendung: Nicht für die Navigation durch den Straßenverkehr geeignet"; ObjectID = "1gf-91-0pO"; */
+"1gf-91-0pO.text" = "Demo Application: Not suitable for navigating traffic";
+
+/* Class = "UITableViewSection"; headerTitle = "Kamera"; ObjectID = "7Hx-yu-nCr"; */
+"7Hx-yu-nCr.headerTitle" = "Camera";
+
+/* Class = "UITableViewSection"; footerTitle = "Stellt alle Einstellungen auf die Ursprungswerte zurück"; ObjectID = "7Nc-zB-blE"; */
+"7Nc-zB-blE.footerTitle" = "Resets all settings to their original values";
+
+/* Class = "UILabel"; text = "Vibration"; ObjectID = "8qc-2I-nTP"; */
+"8qc-2I-nTP.text" = "Vibration";
+
+/* Class = "UILabel"; text = "Zum Fortsetzen der Erkennung bringe das Gerät in einen für die Ampelerkennung günstigen Neigungswinkel"; ObjectID = "Ecq-b2-XSb"; */
+"Ecq-b2-XSb.text" = "To continue detection, tilt the device to a favorable angle for traffic light detection";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "FW6-RE-wcj"; */
+"FW6-RE-wcj.text" = "Detail";
+
+/* Class = "UITableViewSection"; footerTitle = "Gibt an ab welcher Konfidenz in Prozent eine Erkennung berücksichtigt wird"; ObjectID = "FXq-oI-S2m"; */
+"FXq-oI-S2m.footerTitle" = "Indicates the percentage of confidence above which a detection is considered";
+
+/* Class = "UITableViewSection"; headerTitle = "Konfidenzschwelle"; ObjectID = "FXq-oI-S2m"; */
+"FXq-oI-S2m.headerTitle" = "Confidence Threshold";
+
+/* Class = "UILabel"; text = "Zurücksetzen"; ObjectID = "J2L-nd-v5S"; */
+"J2L-nd-v5S.text" = "Reset";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "Kha-Gb-h5G"; */
+"Kha-Gb-h5G.text" = "100";
+
+/* Class = "UILabel"; text = "Elapsed Time"; ObjectID = "UGh-bZ-CQP"; */
+"UGh-bZ-CQP.text" = "Elapsed Time";
+
+/* Class = "UILabel"; text = "Vorschau"; ObjectID = "UQ1-HL-yFc"; */
+"UQ1-HL-yFc.text" = "Preview";
+
+/* Class = "UILabel"; text = "Ton"; ObjectID = "Uhd-eO-ohm"; */
+"Uhd-eO-ohm.text" = "Sound";
+
+/* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "WIq-R2-tUq"; */
+"WIq-R2-tUq.headerTitle" = "Feedback";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "XcH-XU-7OG"; */
+"XcH-XU-7OG.text" = "Title";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "aI9-sd-LQ6"; */
+"aI9-sd-LQ6.text" = "0";
+
+/* Class = "UILabel"; text = "Pausiert"; ObjectID = "aQs-X4-oie"; */
+"aQs-X4-oie.text" = "Pause";
+
+/* Class = "UILabel"; text = "Zoom"; ObjectID = "jjc-HL-eK9"; */
+"jjc-HL-eK9.text" = "Zoom";
+
+/* Class = "UILabel"; text = "Auflösung"; ObjectID = "yRf-7T-Cr7"; */
+"yRf-7T-Cr7.text" = "Resolution";

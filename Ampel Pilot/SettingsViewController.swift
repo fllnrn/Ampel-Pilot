@@ -32,7 +32,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Einstellungen"
+        title = NSLocalizedString("Einstellungen", comment: "Einstellungen")
         
         //navigationItem.rightBarButtonItems = [closeButton]
         setupViewModel()
