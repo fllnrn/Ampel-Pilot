@@ -140,8 +140,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2k8-92-A32">
-                                                    <rect key="frame" x="318" y="6" width="49" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2k8-92-A32">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="soundSwitchValueChanged:forEvent:" destination="arc-LX-erf" eventType="valueChanged" id="BLQ-2w-LuC"/>
                                                     </connections>
@@ -149,6 +149,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="2k8-92-A32" secondAttribute="trailing" constant="16" id="A6O-VL-LKB"/>
+                                                <constraint firstItem="2k8-92-A32" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uhd-eO-ohm" secondAttribute="trailing" constant="8" symbolic="YES" id="e8P-LZ-pQf"/>
                                                 <constraint firstItem="Uhd-eO-ohm" firstAttribute="leading" secondItem="7sU-fj-jXb" secondAttribute="leading" constant="16" id="f40-ml-xBP"/>
                                                 <constraint firstItem="2k8-92-A32" firstAttribute="centerY" secondItem="7sU-fj-jXb" secondAttribute="centerY" id="hvJ-Mz-xpW"/>
                                                 <constraint firstItem="Uhd-eO-ohm" firstAttribute="centerY" secondItem="7sU-fj-jXb" secondAttribute="centerY" id="yJS-8F-wiK"/>
@@ -168,8 +169,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BK7-Zc-aiu">
-                                                    <rect key="frame" x="318" y="6" width="49" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BK7-Zc-aiu">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="vibrationSwitchValueChanged:" destination="arc-LX-erf" eventType="valueChanged" id="9gM-K9-ffA"/>
                                                     </connections>
@@ -178,6 +179,7 @@
                                             <constraints>
                                                 <constraint firstItem="8qc-2I-nTP" firstAttribute="leading" secondItem="Pdj-o9-gho" secondAttribute="leading" constant="16" id="5Nc-Nz-pQc"/>
                                                 <constraint firstItem="8qc-2I-nTP" firstAttribute="centerY" secondItem="Pdj-o9-gho" secondAttribute="centerY" id="CWj-uP-nzz"/>
+                                                <constraint firstItem="BK7-Zc-aiu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8qc-2I-nTP" secondAttribute="trailing" constant="8" symbolic="YES" id="Pg1-Y4-41e"/>
                                                 <constraint firstAttribute="trailing" secondItem="BK7-Zc-aiu" secondAttribute="trailing" constant="16" id="c2i-kN-ip3"/>
                                                 <constraint firstItem="BK7-Zc-aiu" firstAttribute="centerY" secondItem="Pdj-o9-gho" secondAttribute="centerY" id="wlV-OS-toz"/>
                                             </constraints>
@@ -270,7 +272,7 @@
                                                     <rect key="frame" x="305" y="14" width="37.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -289,8 +291,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J9b-MR-jRh">
-                                                    <rect key="frame" x="312" y="6" width="49" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="J9b-MR-jRh">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="camPreviewSwitchValueChanged:" destination="arc-LX-erf" eventType="valueChanged" id="RB0-JU-V5J"/>
                                                     </connections>
@@ -299,6 +301,7 @@
                                             <constraints>
                                                 <constraint firstItem="UQ1-HL-yFc" firstAttribute="centerY" secondItem="PS8-zo-9Va" secondAttribute="centerY" id="6Nh-ow-lPH"/>
                                                 <constraint firstItem="J9b-MR-jRh" firstAttribute="centerY" secondItem="PS8-zo-9Va" secondAttribute="centerY" id="k53-Vb-Wog"/>
+                                                <constraint firstItem="J9b-MR-jRh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UQ1-HL-yFc" secondAttribute="trailing" constant="8" symbolic="YES" id="rgs-4L-TPh"/>
                                                 <constraint firstItem="UQ1-HL-yFc" firstAttribute="leading" secondItem="PS8-zo-9Va" secondAttribute="leading" constant="16" id="wuh-Yf-JkJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="J9b-MR-jRh" secondAttribute="trailing" constant="16" id="zaW-9a-vTj"/>
                                             </constraints>
@@ -332,6 +335,7 @@
                                                 <constraint firstItem="fyQ-wK-mS7" firstAttribute="centerY" secondItem="Uya-v4-kef" secondAttribute="centerY" id="Kr4-qC-TgE"/>
                                                 <constraint firstAttribute="trailing" secondItem="fyQ-wK-mS7" secondAttribute="trailing" constant="16" id="ZCH-Iy-Gud"/>
                                                 <constraint firstItem="wg8-YM-dUR" firstAttribute="centerY" secondItem="Uya-v4-kef" secondAttribute="centerY" id="Zpc-na-Itb"/>
+                                                <constraint firstItem="fyQ-wK-mS7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wg8-YM-dUR" secondAttribute="trailing" constant="8" symbolic="YES" id="hJA-hL-FrS"/>
                                                 <constraint firstItem="wg8-YM-dUR" firstAttribute="leading" secondItem="Uya-v4-kef" secondAttribute="leading" constant="16" id="iQF-yr-P1W"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -343,8 +347,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Movie URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="kS0-Hp-kdx">
-                                                    <rect key="frame" x="16" y="14" width="69.5" height="17"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Selected file" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="kS0-Hp-kdx">
+                                                    <rect key="frame" x="16" y="14" width="80.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>

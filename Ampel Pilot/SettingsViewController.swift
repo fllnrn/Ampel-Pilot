@@ -82,8 +82,10 @@ class SettingsViewController: UITableViewController {
             self.fromMovieSwitch.setOn($0, animated: true)
         }
 
-        viewModel.movieUrl.bind { url in
-            self.movieURLLabel.text = url
+        viewModel.movieUrl.bind { urlString in
+            if let url = URL(string: urlString) {
+                self.movieURLLabel.text = url.lastPathComponent
+            }
         }
         
         viewModel?.initFetch()
@@ -167,7 +169,21 @@ class SettingsViewController: UITableViewController {
     }
 
     private func showSelectMovieController() {
-        print("SHOW SELECT MOVIE URL CONTROLLER")
+        let vc:UIDocumentPickerViewController
+        if #available(iOS 14.0, *) {
+            vc = UIDocumentPickerViewController(forOpeningContentTypes: [.video, .movie])
+        } else {
+            vc = UIDocumentPickerViewController(documentTypes: ["public.video"], in: .open)
+        }
+        vc.delegate = self
+
+        present(vc, animated: true)
     }
 
+}
+extension SettingsViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        viewModel.updateMovieUrl(new: urls[0].absoluteString)
+        dismiss(animated: true)
+    }
 }

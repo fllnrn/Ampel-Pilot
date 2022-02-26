@@ -8,8 +8,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Kamera"; ObjectID = "7Hx-yu-nCr"; */
 "7Hx-yu-nCr.headerTitle" = "Camera";
 
-/* Class = "UITableViewSection"; footerTitle = "Stellt alle Einstellungen auf die Ursprungswerte zurück"; ObjectID = "7Nc-zB-blE"; */
-"7Nc-zB-blE.footerTitle" = "Resets all settings to their original values";
+/* Class = "UITableViewSection"; footerTitle = "Stellt alle Einstellungen auf die Ursprungswerte zurück"; ObjectID = "rID-9t-LfP"; */
+"rID-9t-LfP.footerTitle" = "Resets all settings to their original values";
 
 /* Class = "UILabel"; text = "Vibration"; ObjectID = "8qc-2I-nTP"; */
 "8qc-2I-nTP.text" = "Vibration";
@@ -26,8 +26,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Konfidenzschwelle"; ObjectID = "FXq-oI-S2m"; */
 "FXq-oI-S2m.headerTitle" = "Confidence Threshold";
 
-/* Class = "UILabel"; text = "Zurücksetzen"; ObjectID = "J2L-nd-v5S"; */
-"J2L-nd-v5S.text" = "Reset";
+/* Class = "UILabel"; text = "Zurücksetzen"; ObjectID = "nAb-ad-Ehr"; */
+"nAb-ad-Ehr.text" = "Reset";
 
 /* Class = "UILabel"; text = "100"; ObjectID = "Kha-Gb-h5G"; */
 "Kha-Gb-h5G.text" = "100";
