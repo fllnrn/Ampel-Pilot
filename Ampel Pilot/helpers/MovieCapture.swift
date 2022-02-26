@@ -10,20 +10,26 @@ import Foundation
 import AVFoundation
 
 public class MovieCapture: NSObject, Capture {
-    public func start() {
+    private var movieUrl: URL
 
+    init(from url: URL) {
+        movieUrl = url
+    }
+
+    public func start() {
+        print("START")
     }
 
     public func stop() {
-
+        print("STOP")
     }
 
     public func zoomIn() {
-
+        print("ZOOM_IN")
     }
 
     public func zoomOut() {
-
+        print("ZOOM_OUT")
     }
 
     public var delegate: CaptureDelegate?
@@ -33,7 +39,8 @@ public class MovieCapture: NSObject, Capture {
     public var fps: Int = 15
 
     public func setUp(completion: @escaping (Bool) -> Void) {
-
+        print("SET_UP")
+        completion(true)
     }
 
     public var previewLayer: CALayer?

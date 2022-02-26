@@ -22,6 +22,10 @@ struct Settings {
     var resolution: AVCaptureSession.Preset
     var zoom: Float
     var livePreview: Bool
+
+    // Movie
+    var movie: Bool
+    var movieUrl: String
     
     static func initDefaults() {
         if !Defaults.hasKey("sound") {
@@ -47,9 +51,17 @@ struct Settings {
         if !Defaults.hasKey("zoom") {
             Defaults[DefaultsKey<Double>("zoom")] = 1.25
         }
-        
+
         if !Defaults.hasKey("livePreview") {
             Defaults[DefaultsKey<Bool>("livePreview")] = false
+        }
+
+        if !Defaults.hasKey("Movie") {
+            Defaults[DefaultsKey<Bool>("Movie")] = false
+        }
+
+        if !Defaults.hasKey("Movie URL") {
+            Defaults[DefaultsKey<String>("Movie URL")] = ""
         }
     }
     
@@ -61,6 +73,8 @@ struct Settings {
         Defaults.remove("resolution")
         Defaults.remove("zoom")
         Defaults.remove("livePreview")
+        Defaults.remove("Movie")
+        Defaults.remove("Movie URL")
     }
     
     static func fetch() -> Settings {
@@ -71,8 +85,10 @@ struct Settings {
         let resolution = Defaults[DefaultsKey<Any?>("resolution")] as! AVCaptureSession.Preset
         let zoom = Float(Defaults[DefaultsKey<Double>("zoom")])
         let livePreview = Defaults[DefaultsKey<Bool>("livePreview")]
+        let movie = Defaults[DefaultsKey<Bool>("Movie")]
+        let movieUrl = Defaults[DefaultsKey<String>("Movie URL")]
         
-        return Settings(sound: sound, vibrate: vibrate, confidenceThreshold: cThresh, iouThreshold: iouThresh, resolution: resolution, zoom: zoom, livePreview: livePreview)
+        return Settings(sound: sound, vibrate: vibrate, confidenceThreshold: cThresh, iouThreshold: iouThresh, resolution: resolution, zoom: zoom, livePreview: livePreview, movie: movie, movieUrl: movieUrl)
     }
     
     func save() {
@@ -83,5 +99,7 @@ struct Settings {
         Defaults[DefaultsKey<Any?>("resolution")] = self.resolution
         Defaults[DefaultsKey<Double>("zoom")] = Double(self.zoom)
         Defaults[DefaultsKey<Bool>("livePreview")] = self.livePreview
+        Defaults[DefaultsKey<Bool>("Movie")] = self.movie
+        Defaults[DefaultsKey<String>("Movie URL")] = self.movieUrl
     }
 }

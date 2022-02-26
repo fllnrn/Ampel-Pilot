@@ -14,6 +14,7 @@ class SettingsViewController: UITableViewController {
     private let CAM_SECTION = 2
     private let RES_ROW = 0
     private let ZOOM_ROW = 1
+    private let MOVIE_SECTION = 3
     
     var viewModel: SettingsViewModel!
     
@@ -23,7 +24,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var resolutionLabel: UILabel!
     @IBOutlet weak var zoomLabel: UILabel!
     @IBOutlet weak var camPreviewSwitch: UISwitch!
-    
+    @IBOutlet weak var fromMovieSwitch: UISwitch!
+    @IBOutlet weak var movieURLLabel: UILabel!
+
     lazy var closeButton: UIBarButtonItem = {
         let bi = UIBarButtonItem(title: "Schließen", style: UIBarButtonItemStyle.plain, target: self, action: #selector(closeBtnPressed))
         return bi
@@ -74,6 +77,14 @@ class SettingsViewController: UITableViewController {
         viewModel.livePreview.bind {
             self.camPreviewSwitch.setOn($0, animated: true)
         }
+
+        viewModel.movie.bind {
+            self.fromMovieSwitch.setOn($0, animated: true)
+        }
+
+        viewModel.movieUrl.bind { url in
+            self.movieURLLabel.text = url
+        }
         
         viewModel?.initFetch()
     }
@@ -98,13 +109,18 @@ class SettingsViewController: UITableViewController {
     @IBAction func camPreviewSwitchValueChanged(_ sender: UISwitch) {
         viewModel.updateLivePreview(new: sender.isOn)
     }
-    
+    @IBAction func fromMovieSwitchValueChanged(_ sender: UISwitch) {
+        viewModel.updateMovie(new: sender.isOn)
+    }
+
     // MARK: - Delegates
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == CAM_SECTION && indexPath.row == RES_ROW {
             self.showCapturePresetSelectionController()
         } else if indexPath.section == CAM_SECTION && indexPath.row == ZOOM_ROW {
            self.showCaptureZoomSelectionController()
+        } else if indexPath.section == MOVIE_SECTION {
+            self.showSelectMovieController()
         } else if indexPath.section == (tableView.numberOfSections - 1) {
             tableView.deselectRow(at: indexPath, animated: true)
             self.viewModel.reset()
@@ -148,6 +164,10 @@ class SettingsViewController: UITableViewController {
             })
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+
+    private func showSelectMovieController() {
+        print("SHOW SELECT MOVIE URL CONTROLLER")
     }
 
 }
