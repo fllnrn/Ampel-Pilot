@@ -28,7 +28,7 @@ class DetectionViewController: UIViewController {
     let motionManager = MotionManager()
     var lightPhaseManager: LightPhaseManager!
     
-    var videoCapture: VideoCapture?
+    var videoCapture: Capture?
     
     var devicePitchAcceptable = true
     var request: VNCoreMLRequest!
@@ -259,14 +259,14 @@ class DetectionViewController: UIViewController {
     func setUpCamera() {
         videoCapture = nil
         
-        videoCapture = VideoCapture()
+        videoCapture = VideoCapture(sessionPreset: viewModel.capturePreset)
         videoCapture?.delegate = self
         videoCapture?.initialZoom = CGFloat(self.viewModel.captureZoom)
         videoCapture?.fps = 15
         
         motionManager.stop()
         
-        videoCapture?.setUp(sessionPreset: viewModel.capturePreset) { success in
+        videoCapture?.setUp() { success in
             if success {
                 // Add the video preview into the UI.
                 if let layers = self.videoPreview.layer.sublayers {
@@ -413,8 +413,8 @@ class DetectionViewController: UIViewController {
 
 }
 
-extension DetectionViewController: VideoCaptureDelegate {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
+extension DetectionViewController: CaptureDelegate {
+    func videoCapture(_ capture: Capture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // For debugging.
         //predict(image: UIImage(named: "dog416")!); return
         
@@ -431,7 +431,7 @@ extension DetectionViewController: VideoCaptureDelegate {
         }
     }
     
-    func videoCaptureDidStart(_ capture: VideoCapture) {
+    func videoCaptureDidStart(_ capture: Capture) {
         setView(view: self.pauseScreen, hidden: true, duration: 0.15)
         setView(view: self.adminOverlayView, hidden: false, duration: 0.15)
         
@@ -440,7 +440,7 @@ extension DetectionViewController: VideoCaptureDelegate {
         self.updateResultsLabel(.none)
     }
     
-    func videoCaptureDidStop(_ capture: VideoCapture) {
+    func videoCaptureDidStop(_ capture: Capture) {
         setView(view: self.pauseScreen, hidden: false, duration: 0.15)
         setView(view: self.adminOverlayView, hidden: true, duration: 0.15)
         
@@ -453,7 +453,7 @@ extension DetectionViewController: MotionManagerDelegate {
         let pitch = (180 / Double.pi * withMotion.attitude.pitch)/100
         self.devicePitchAcceptable = pitch < 0.6 ? false : true
         
-        if let videoCapture = self.videoCapture {
+        if let videoCapture = self.videoCapture as? VideoCapture {
             if !self.devicePitchAcceptable && videoCapture.captureSession.isRunning {
                 videoCapture.stop()
             } else if self.devicePitchAcceptable && !videoCapture.captureSession.isRunning {

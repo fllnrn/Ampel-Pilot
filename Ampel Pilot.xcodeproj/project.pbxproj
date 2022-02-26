@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C84DA1727C9357B00F31B84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C84DA1927C9357B00F31B84 /* Localizable.strings */; };
+		5C87565F27CA4D1D00035A2A /* MovieCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87565E27CA4D1D00035A2A /* MovieCapture.swift */; };
+		5C87566127CA4D8200035A2A /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87566027CA4D8200035A2A /* Capture.swift */; };
 		A31AF2121F9B370B0067132E /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AF2111F9B370B0067132E /* SelectionViewController.swift */; };
 		A31AF2141F9B39750067132E /* SelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AF2131F9B39750067132E /* SelectionViewModel.swift */; };
 		A327FA691F94A8AF002A33FE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327FA681F94A8AF002A33FE /* Settings.swift */; };
@@ -60,6 +62,8 @@
 		5C84DA1827C9357B00F31B84 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C84DA1A27C9357E00F31B84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C84DA1B27C9357F00F31B84 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5C87565E27CA4D1D00035A2A /* MovieCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCapture.swift; sourceTree = "<group>"; };
+		5C87566027CA4D8200035A2A /* Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
 		A31AF2111F9B370B0067132E /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		A31AF2131F9B39750067132E /* SelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewModel.swift; sourceTree = "<group>"; };
 		A327FA681F94A8AF002A33FE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -203,7 +207,9 @@
 		A35F9F5A1F837D0C00208042 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5C87566027CA4D8200035A2A /* Capture.swift */,
 				A35F9F621F837DB800208042 /* VideoCapture.swift */,
+				5C87565E27CA4D1D00035A2A /* MovieCapture.swift */,
 				A3E876991F87B235006BEE74 /* MotionManager.swift */,
 			);
 			path = helpers;
@@ -373,6 +379,7 @@
 				A3B429F01FFA749600404ABE /* AmpelPilot_2812rg.mlmodel in Sources */,
 				A327FA6C1F94B485002A33FE /* DataManager.swift in Sources */,
 				A35F9F2F1F8378DA00208042 /* DetectionViewController.swift in Sources */,
+				5C87565F27CA4D1D00035A2A /* MovieCapture.swift in Sources */,
 				A3B07EE31F84DC9000B791B5 /* LightPhaseManager.swift in Sources */,
 				A31AF2141F9B39750067132E /* SelectionViewModel.swift in Sources */,
 				A3ADF3541F9FA67600EA4F8D /* VisualFeedbackView.swift in Sources */,
@@ -380,6 +387,7 @@
 				A32E3A191F9A20C40059276D /* SettingsViewController.swift in Sources */,
 				A35F9F2D1F8378DA00208042 /* AppDelegate.swift in Sources */,
 				A32E3A1B1F9A3F870059276D /* Box.swift in Sources */,
+				5C87566127CA4D8200035A2A /* Capture.swift in Sources */,
 				A327FA701F94C597002A33FE /* SettingsViewModel.swift in Sources */,
 				A3E8769A1F87B235006BEE74 /* MotionManager.swift in Sources */,
 				A35F9F681F837E0400208042 /* BoundingBox.swift in Sources */,

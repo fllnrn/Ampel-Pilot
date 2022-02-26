@@ -9,16 +9,9 @@ import UIKit
 import AVFoundation
 import CoreVideo
 
-public protocol VideoCaptureDelegate: class {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame: CVPixelBuffer?, timestamp: CMTime)
-    
-    func videoCaptureDidStop(_ capture: VideoCapture)
-    func videoCaptureDidStart(_ capture: VideoCapture)
-}
-
-public class VideoCapture: NSObject {
-    public var previewLayer: AVCaptureVideoPreviewLayer?
-    public weak var delegate: VideoCaptureDelegate?
+public class VideoCapture: NSObject, Capture {
+    public var previewLayer: CALayer?
+    public weak var delegate: CaptureDelegate?
     public var fps = 15
     public var initialZoom: CGFloat = 1.5
     
@@ -30,11 +23,16 @@ public class VideoCapture: NSObject {
     
     var lastTimestamp = CMTime()
     var captureDevice: AVCaptureDevice!
+
+    var sessionPreset: AVCaptureSession.Preset
+
+    init(sessionPreset: AVCaptureSession.Preset = .medium) {
+        self.sessionPreset = sessionPreset
+    }
     
-    public func setUp(sessionPreset: AVCaptureSession.Preset = .medium,
-                      completion: @escaping (Bool) -> Void) {
+    public func setUp(completion: @escaping (Bool) -> Void) {
         queue.async {
-            let success = self.setUpCamera(sessionPreset: sessionPreset)
+            let success = self.setUpCamera(sessionPreset: self.sessionPreset)
             DispatchQueue.main.async {
                 completion(success)
             }
