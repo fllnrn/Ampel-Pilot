@@ -193,8 +193,12 @@ class DetectionViewController: UIViewController {
             self.videoPreview.isHidden = !self.viewModel.devScreen
             self.resultsView.isHidden = !self.viewModel.devScreen
             
-            if !Platform.isSimulator {
-                self.setUpCamera()
+            if Platform.isSimulator || self.viewModel.movie {
+                if let url = URL(string: self.viewModel.movieUrl) {
+                    self.setUpCamera(capture: MovieCapture(from: url))
+                }
+            } else {
+                self.setUpCamera(capture: VideoCapture(sessionPreset: self.viewModel.capturePreset))
             }
         
             self.frameCapturingStartTime = CACurrentMediaTime()
@@ -256,10 +260,10 @@ class DetectionViewController: UIViewController {
         request.imageCropAndScaleOption = VNImageCropAndScaleOption.scaleFill
     }
     
-    func setUpCamera() {
+    func setUpCamera(capture: Capture) {
         videoCapture = nil
         
-        videoCapture = VideoCapture(sessionPreset: viewModel.capturePreset)
+        videoCapture = capture
         videoCapture?.delegate = self
         videoCapture?.initialZoom = CGFloat(self.viewModel.captureZoom)
         videoCapture?.fps = 15
@@ -294,6 +298,7 @@ class DetectionViewController: UIViewController {
             }
         }
     }
+
     
     // MARK: - UI stuff
     

@@ -37,6 +37,14 @@ class DetectionViewModel {
     public var devScreen: Bool {
         return settings?.livePreview ?? false
     }
+
+    public var movie: Bool {
+        return settings?.movie ?? false
+    }
+
+    public var movieUrl: String {
+        return settings?.movieUrl ?? ""
+    }
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
