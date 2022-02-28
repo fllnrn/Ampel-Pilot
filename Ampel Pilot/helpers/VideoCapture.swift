@@ -19,8 +19,6 @@ public class VideoCapture: NSObject, Capture {
     let videoOutput = AVCaptureVideoDataOutput()
     let queue = DispatchQueue(label: "net.machinethink.camera-queue")
     
-    let cicontext = CIContext()
-    
     var lastTimestamp = CMTime()
     var captureDevice: AVCaptureDevice!
 
@@ -150,35 +148,10 @@ extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
         if deltaTime >= CMTimeMake(1, Int32(fps)) {
             lastTimestamp = timestamp
             let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-            delegate?.videoCapture(self, didCaptureVideoFrame: self.mani(buffer: imageBuffer!), timestamp: timestamp)
+            delegate?.videoCapture(self, didCaptureVideoFrame: Filter.mani(buffer: imageBuffer!), timestamp: timestamp)
         }
     }
-    
-    func mani(buffer: CVImageBuffer) -> CVPixelBuffer? {
-        
-        let cameraImage = CIImage(cvImageBuffer: buffer)
-        
-        if let colorMatrixFilter = CIFilter(name: "CIColorMatrix") {
-            let r:CGFloat = 1
-            let g:CGFloat = 1
-            let b:CGFloat = 0
-            let a:CGFloat = 1
-            
-            colorMatrixFilter.setDefaults()
-            colorMatrixFilter.setValue(cameraImage, forKey:"inputImage")
-            colorMatrixFilter.setValue(CIVector(x:r, y:0, z:0, w:0), forKey:"inputRVector")
-            colorMatrixFilter.setValue(CIVector(x:0, y:g, z:0, w:0), forKey:"inputGVector")
-            colorMatrixFilter.setValue(CIVector(x:0, y:0, z:b, w:0), forKey:"inputBVector")
-            colorMatrixFilter.setValue(CIVector(x:0, y:0, z:0, w:a), forKey:"inputAVector")
-            
-            if let ciimage = colorMatrixFilter.outputImage {
-                self.cicontext.render(ciimage, to: buffer)
-                return buffer
-            }
-        }
-        
-        return nil
-    }
+
     
     public func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         //print("dropped frame")

@@ -10,14 +10,14 @@ import Foundation
 import AVFoundation
 import CoreImage
 
-class FizedSizeOperationQueue: OperationQueue {
+class FixedSizeOperationQueue: OperationQueue {
     override func addOperation(_ block: @escaping () -> Void) {
         if self.operationCount < self.maxConcurrentOperationCount {
             super.addOperation(block)
         }
-//        else {
-//            print("skipped")
-//        }
+        else {
+            print("skipped")
+        }
     }
 }
 
@@ -25,12 +25,15 @@ public class MovieCapture: NSObject, Capture {
     private var movieUrl: URL
     private var player: AVPlayer!
     private var videoOutput: AVPlayerItemVideoOutput!
-    var lastTimestamp = CMTime()
-    let queue = FizedSizeOperationQueue()
+    private var timeObserverToken: Any?
+    private let opQueue = FixedSizeOperationQueue()
+    private var orientation: CGImagePropertyOrientation = .up
+
+    private let queue = DispatchQueue(label: "net.machinethink.video-queue", qos: .userInteractive)
 
     init(from url: URL) {
         movieUrl = url
-        queue.maxConcurrentOperationCount = 2
+        opQueue.maxConcurrentOperationCount = 2
     }
 
     public func start() {
@@ -67,34 +70,49 @@ public class MovieCapture: NSObject, Capture {
     public var previewLayer: CALayer?
 
     public func setUp(completion: @escaping (Bool) -> Void) {
-        player = AVPlayer(url: movieUrl)
+        let requiredAssetKeys = [
+            "playable",
+            "hasProtectedContent"
+        ]
+        let asset = AVAsset(url: movieUrl)
+        let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: requiredAssetKeys)
+
+        player = AVPlayer(playerItem: playerItem)
+
         videoOutput = AVPlayerItemVideoOutput()
         player.currentItem?.add(videoOutput)
-        let displayLink = CADisplayLink(target: self, selector: #selector(displayLinkDidRefresh(link:)))
-        displayLink.add(to: RunLoop.main, forMode: .commonModes)
-        let playerLayer = AVPlayerLayer()
-        playerLayer.player = player
-        previewLayer = playerLayer
 
-        completion(true)
+        if let transform = asset.tracks(withMediaType: .video).first?.preferredTransform {
+            orientation = getOrientation(from: transform)
+        }
+
+        let interval = CMTimeMake(1, Int32(fps))
+        timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: queue, using: CheckNextFrameRefresh)
+        previewLayer = AVPlayerLayer(player: player)
+
+        if let error = playerItem.error {
+            print(error.localizedDescription)
+            completion(false)
+        } else {
+            completion(true)
+        }
     }
 
-    @objc
-    func displayLinkDidRefresh(link: CADisplayLink) {
-        let timestamp = videoOutput.itemTime(forHostTime: CACurrentMediaTime())
-        
-        if videoOutput.hasNewPixelBuffer(forItemTime: timestamp) {
-            let pixelBuffer = videoOutput.copyPixelBuffer(forItemTime: timestamp, itemTimeForDisplay: nil)
-            let deltaTime = timestamp - lastTimestamp
-            if deltaTime >= CMTimeMake(1, Int32(fps)) {
-                lastTimestamp = timestamp
-                queue.addOperation {
-                    self.delegate?.videoCapture(self, didCaptureVideoFrame: pixelBuffer, timestamp: timestamp)
+    func CheckNextFrameRefresh(timestamp: CMTime) {
+        if videoOutput.hasNewPixelBuffer(forItemTime: timestamp),
+           var pixelBuffer = videoOutput.copyPixelBuffer(forItemTime: timestamp, itemTimeForDisplay: nil)
+        {
+            print(timestamp.seconds)
+            if orientation != .up {
+                if let rotatedBuffer = Filter.rotate(pixelBuffer, orientation: orientation) {
+                    pixelBuffer = rotatedBuffer
                 }
             }
+            opQueue.addOperation {
+                self.delegate?.videoCapture(self, didCaptureVideoFrame: Filter.mani(buffer: pixelBuffer), timestamp: timestamp)
+            }
+        } else {
+            print("CheckNextFrameRefresh called, hasNewPixelBuffer = false")
         }
     }
 }
-
-
-

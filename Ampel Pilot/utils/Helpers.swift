@@ -160,3 +160,17 @@ public func setView(view: UIView, hidden: Bool, duration: TimeInterval) {
         view.isHidden = hidden
     }, completion: nil)
 }
+
+
+func getOrientation(from transform: CGAffineTransform) -> CGImagePropertyOrientation {
+    switch atan2(Double(transform.b), Double(transform.a)) * (180 / Double.pi) {
+    case -180, 180:
+        return .down
+    case 90:
+        return .right
+    case -90:
+        return .left
+    default:
+        return .up
+    }
+}

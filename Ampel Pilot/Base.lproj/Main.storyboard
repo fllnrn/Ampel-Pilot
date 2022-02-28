@@ -84,6 +84,13 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oz6-DY-O1W">
+                                <rect key="frame" x="16" y="44" width="109" height="146"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="H5q-0X-6p2"/>
+                                    <constraint firstAttribute="height" constant="146" id="jIv-iF-aZm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
@@ -92,7 +99,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ce7-Li-NTk" secondAttribute="bottom" id="E7E-uY-UJ7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ntT-eB-72z" secondAttribute="trailing" id="F7U-AF-cFt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y3D-2k-3I4" secondAttribute="bottom" id="G93-e0-1Ed"/>
+                            <constraint firstItem="Oz6-DY-O1W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hwa-6W-Jon"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1gf-91-0pO" secondAttribute="trailing" id="Oji-kK-xcu"/>
+                            <constraint firstItem="Oz6-DY-O1W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PLr-V4-AKL"/>
                             <constraint firstItem="Ce7-Li-NTk" firstAttribute="firstBaseline" secondItem="1gf-91-0pO" secondAttribute="baseline" constant="10" symbolType="layoutAnchor" id="ViE-4g-Qe3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ntT-eB-72z" secondAttribute="bottom" id="ee5-bp-W75"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Y3D-2k-3I4" secondAttribute="top" constant="21" id="gQw-bg-1c2"/>
@@ -106,6 +115,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Lvx-ZP-WH7"/>
                     <connections>
+                        <outlet property="debugImage" destination="Oz6-DY-O1W" id="BcF-bp-jOO"/>
                         <outlet property="pauseScreen" destination="Y3D-2k-3I4" id="y53-Hg-uZv"/>
                         <outlet property="resultsView" destination="Ce7-Li-NTk" id="eaX-2z-16n"/>
                         <outlet property="timeLabel" destination="UGh-bZ-CQP" id="AzR-Ev-La3"/>
