@@ -44,7 +44,7 @@ class Filter {
             let error = CVPixelBufferCreate(kCFAllocatorDefault,
                                             CVPixelBufferGetHeight(pixelBuffer),
                                             CVPixelBufferGetWidth(pixelBuffer),
-                                            kCVPixelFormatType_420YpCbCr8BiPlanarFullRange,
+                                            CVPixelBufferGetPixelFormatType(pixelBuffer),
                                             nil,
                                             &newPixelBuffer)
             guard error == kCVReturnSuccess else {
