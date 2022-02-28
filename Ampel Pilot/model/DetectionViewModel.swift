@@ -42,8 +42,8 @@ class DetectionViewModel {
         return settings?.movie ?? false
     }
 
-    public var movieUrl: String {
-        return settings?.movieUrl ?? ""
+    public var movieBookmark: Data {
+        return settings?.movieBookmark ?? Data()
     }
     
     init(dataManager: DataManager) {

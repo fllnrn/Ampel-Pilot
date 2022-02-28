@@ -194,9 +194,19 @@ class DetectionViewController: UIViewController {
             self.resultsView.isHidden = !self.viewModel.devScreen
             
             if Platform.isSimulator || self.viewModel.movie {
-                if let url = URL(string: self.viewModel.movieUrl) {
-                    self.setUpCamera(capture: MovieCapture(from: url))
+                var isStale = false
+                guard let url = try? URL(resolvingBookmarkData: self.viewModel.movieBookmark, bookmarkDataIsStale: &isStale),
+                      !isStale,
+                      let movieUrl = url else {
+                    print("Error converting Bookmark to URL")
+                    return
                 }
+                guard movieUrl.startAccessingSecurityScopedResource() else {
+                    print("No permissions to access document")
+                    return
+                }
+                defer {url?.stopAccessingSecurityScopedResource()}
+                self.setUpCamera(capture: MovieCapture(from: movieUrl))
             } else {
                 self.setUpCamera(capture: VideoCapture(sessionPreset: self.viewModel.capturePreset))
             }

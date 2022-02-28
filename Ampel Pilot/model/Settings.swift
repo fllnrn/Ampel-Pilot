@@ -25,7 +25,7 @@ struct Settings {
 
     // Movie
     var movie: Bool
-    var movieUrl: String
+    var movieBookmark: Data
     
     static func initDefaults() {
         if !Defaults.hasKey("sound") {
@@ -60,8 +60,8 @@ struct Settings {
             Defaults[DefaultsKey<Bool>("Movie")] = false
         }
 
-        if !Defaults.hasKey("Movie URL") {
-            Defaults[DefaultsKey<String>("Movie URL")] = ""
+        if !Defaults.hasKey("movieBookmark") {
+            Defaults[DefaultsKey<Data>("movieBookmark")] = Data()
         }
     }
     
@@ -74,7 +74,7 @@ struct Settings {
         Defaults.remove("zoom")
         Defaults.remove("livePreview")
         Defaults.remove("Movie")
-        Defaults.remove("Movie URL")
+        Defaults.remove("movieBookmark")
     }
     
     static func fetch() -> Settings {
@@ -86,9 +86,9 @@ struct Settings {
         let zoom = Float(Defaults[DefaultsKey<Double>("zoom")])
         let livePreview = Defaults[DefaultsKey<Bool>("livePreview")]
         let movie = Defaults[DefaultsKey<Bool>("Movie")]
-        let movieUrl = Defaults[DefaultsKey<String>("Movie URL")]
+        let movieBookmark = Defaults[DefaultsKey<Data>("movieBookmark")]
         
-        return Settings(sound: sound, vibrate: vibrate, confidenceThreshold: cThresh, iouThreshold: iouThresh, resolution: resolution, zoom: zoom, livePreview: livePreview, movie: movie, movieUrl: movieUrl)
+        return Settings(sound: sound, vibrate: vibrate, confidenceThreshold: cThresh, iouThreshold: iouThresh, resolution: resolution, zoom: zoom, livePreview: livePreview, movie: movie, movieBookmark: movieBookmark)
     }
     
     func save() {
@@ -100,6 +100,6 @@ struct Settings {
         Defaults[DefaultsKey<Double>("zoom")] = Double(self.zoom)
         Defaults[DefaultsKey<Bool>("livePreview")] = self.livePreview
         Defaults[DefaultsKey<Bool>("Movie")] = self.movie
-        Defaults[DefaultsKey<String>("Movie URL")] = self.movieUrl
+        Defaults[DefaultsKey<Data>("movieBookmark")] = self.movieBookmark
     }
 }

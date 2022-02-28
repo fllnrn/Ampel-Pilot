@@ -22,7 +22,7 @@ class SettingsViewModel {
             zoom.value = settings?.zoom ?? 1.5
             livePreview.value = settings?.livePreview ?? false
             movie.value = settings?.movie ?? false
-            movieUrl.value = settings?.movieUrl ?? ""
+            movieBookmark.value = settings?.movieBookmark ?? Data()
             
             if let settings = settings {
                dataManager.saveSettings(settings)
@@ -44,7 +44,7 @@ class SettingsViewModel {
 
     public var movie: Box<Bool> = Box(false)
 
-    public var movieUrl: Box<String> = Box("")
+    public var movieBookmark: Box<Data> = Box(Data())
     
     public var confidenceThreshold: Box<Float> = Box(0)
     
@@ -148,8 +148,8 @@ extension SettingsViewModel {
         settings?.movie = new
     }
 
-    func updateMovieUrl(new: String) {
-        settings?.movieUrl = new
+    func updateMovieBookmark(new: Data) {
+        settings?.movieBookmark = new
     }
 }
 

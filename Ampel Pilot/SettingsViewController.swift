@@ -82,10 +82,16 @@ class SettingsViewController: UITableViewController {
             self.fromMovieSwitch.setOn($0, animated: true)
         }
 
-        viewModel.movieUrl.bind { urlString in
-            if let url = URL(string: urlString) {
-                self.movieURLLabel.text = url.lastPathComponent
+        viewModel.movieBookmark.bind { bookmarkData in
+            var isStale = false
+            guard let url = try? URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale),
+                  !isStale,
+                  let movieUrl = url else {
+                self.movieURLLabel.text = "error"
+                return
             }
+            self.movieURLLabel.text = movieUrl.lastPathComponent
+
         }
         
         viewModel?.initFetch()
@@ -183,7 +189,20 @@ class SettingsViewController: UITableViewController {
 }
 extension SettingsViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        viewModel.updateMovieUrl(new: urls[0].absoluteString)
+        let url = urls[0]
+
+        guard url.startAccessingSecurityScopedResource() else {
+            return
+        }
+        defer {url.stopAccessingSecurityScopedResource()}
+        do {
+            let bookmarkData = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
+
+            viewModel.updateMovieBookmark(new: bookmarkData)
+        } catch {
+            print(error.localizedDescription)
+        }
         dismiss(animated: true)
+
     }
 }
