@@ -404,14 +404,22 @@ class DetectionViewController: UIViewController {
                 // on the video preview, which is as wide as the screen and has a 4:3
                 // aspect ratio. The video preview also may be letterboxed at the top
                 // and bottom.
-                let width = view.bounds.width
-                let height = width * (self.viewModel.capturePreset == .vga640x480 ? (4 / 3) : (16 / 9))
+                let width: CGFloat
+                let height: CGFloat
+                if let videoLayer = videoPreview.layer.sublayers?.first as? AVPlayerLayer {
+                    width = videoLayer.videoRect.width
+                    height = videoLayer.videoRect.height
+                } else {
+                width = view.bounds.width
+                height = width * (self.viewModel.capturePreset == .vga640x480 ? (4 / 3) : (16 / 9))
+                }
                 let scaleX = width / CGFloat(YOLO.inputWidth)
                 let scaleY = height / CGFloat(YOLO.inputHeight)
                 let top = (view.bounds.height - height) / 2
                 
                 // Translate and scale the rectangle to our own coordinate system.
                 var rect = prediction.rect
+
                 rect.origin.x *= scaleX
                 rect.origin.y *= scaleY
                 rect.origin.y += top
