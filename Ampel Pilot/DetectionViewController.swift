@@ -19,7 +19,6 @@ class DetectionViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var resultsView: UIView!
     @IBOutlet weak var pauseScreen: UIVisualEffectView!
-    @IBOutlet weak var debugImage: UIImageView!
     
     let visualFeedbackView = VisualFeedbackView()
     
@@ -355,9 +354,9 @@ class DetectionViewController: UIViewController {
     func showOnMainThread(_ boundingBoxes: [YOLO.Prediction], _ elapsed: CFTimeInterval, _ phase: LightPhaseManager.Phase) {
         DispatchQueue.main.async {
             // For debugging, to make sure the resized CVPixelBuffer is correct.
-            var debugImage: CGImage?
-            VTCreateCGImageFromCVPixelBuffer(self.resizedPixelBuffer, nil, &debugImage)
-            self.debugImage.image = UIImage(cgImage: debugImage!)
+//            var debugImage: CGImage?
+//            VTCreateCGImageFromCVPixelBuffer(self.resizedPixelBuffer, nil, &debugImage)
+//            self.debugImage.image = UIImage(cgImage: debugImage!)
 
             self.show(predictions: boundingBoxes)
             self.updateResultsLabel(phase)
