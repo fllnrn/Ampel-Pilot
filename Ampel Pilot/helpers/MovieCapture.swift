@@ -45,14 +45,21 @@ public class MovieCapture: NSObject, Capture {
             }
             player.play()
             delegate?.videoCaptureDidStart(self)
+            let interval = CMTimeMake(1, Int32(fps))
+            timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: nil) { [weak self] (time) in
+                self?.CheckNextFrameRefresh(timestamp: time)
+            }
         }
     }
 
     public func stop() {
         print("STOP")
-        if player.timeControlStatus != .paused {
-            player.pause()
+        if player?.timeControlStatus != .paused {
+            player?.pause()
             delegate?.videoCaptureDidStop(self)
+            if let timeObserverToken = timeObserverToken {
+                player.removeTimeObserver(timeObserverToken)
+            }
         }
     }
 
@@ -64,7 +71,7 @@ public class MovieCapture: NSObject, Capture {
         print("ZOOM_OUT")
     }
 
-    public var delegate: CaptureDelegate?
+    public weak var delegate: CaptureDelegate?
     public var initialZoom: CGFloat = 1.0
     public var fps: Int = 1
     public var previewLayer: CALayer?
@@ -86,8 +93,6 @@ public class MovieCapture: NSObject, Capture {
             orientation = getOrientation(from: transform)
         }
 
-        let interval = CMTimeMake(1, Int32(fps))
-        timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: queue, using: CheckNextFrameRefresh)
         previewLayer = AVPlayerLayer(player: player)
 
         if let error = playerItem.error {
@@ -108,7 +113,8 @@ public class MovieCapture: NSObject, Capture {
                     pixelBuffer = rotatedBuffer
                 }
             }
-            opQueue.addOperation {
+            opQueue.addOperation { [weak self] in
+                guard let self = self else {return}
                 self.delegate?.videoCapture(self, didCaptureVideoFrame: Filter.mani(buffer: pixelBuffer), timestamp: timestamp)
             }
         } else {
